@@ -7,7 +7,8 @@ const App = () => {
   useEffect(() => {
     fetch("/api/v1/posts")
       .then((resp) => resp.json())
-      .then((data) => console.log(data));
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
   }, []);
 
   return (
