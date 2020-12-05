@@ -1,10 +1,11 @@
 const express = require("express");
 const cors = require("cors");
-const path = require("path");
+// const path = require("path");
 
 const app = express();
 app.use(cors());
 
+require("./startup/routes")(app);
 require("./startup/db")();
 
 if (process.env.NODE_ENV === "production") {
@@ -16,8 +17,6 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "client/build", "index.html"));
   });
 }
-
-require("./startup/routes")(app);
 
 const port = process.env.PORT || 5000;
 
