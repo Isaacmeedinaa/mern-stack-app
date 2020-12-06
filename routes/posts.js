@@ -1,8 +1,9 @@
 const express = require("express");
+const testMiddleware = require("../middleware/testMiddleware");
 const postController = require("../controllers/postController");
 
 const router = express.Router();
 
-router.route("/").get(postController.getPosts);
+router.get("/", testMiddleware, postController.getPosts);
 
 module.exports = router;
